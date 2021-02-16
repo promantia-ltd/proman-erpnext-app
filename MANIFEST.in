@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include proman *.css
+recursive-include proman *.csv
+recursive-include proman *.html
+recursive-include proman *.ico
+recursive-include proman *.js
+recursive-include proman *.json
+recursive-include proman *.md
+recursive-include proman *.png
+recursive-include proman *.py
+recursive-include proman *.svg
+recursive-include proman *.txt
+recursive-exclude proman *.pyc
