@@ -11,6 +11,37 @@ app_color = "grey"
 app_email = "proman_app@gmail.com"
 app_license = "MIT"
 
+
+fixtures = ["Workflow State",
+            {"dt": "Property Setter",
+             "filters": [
+                 [
+                     "name", "in", ["Lead-contact_by-reqd", "Lead-contact_date-reqd", "Lead-ends_on-reqd",
+                                    "Lead-notes-reqd", "Lead-phone-reqd", "Lead-mobile_no-reqd", "Lead-fax-reqd"]
+                 ]
+             ]},
+            {"dt": "Custom Field",
+                "filters": [
+                    [
+                        "name", "in", ["Lead-remarks", "Lead-influencer"]
+                    ]
+                ]},
+            {"dt": 'Workflow',
+                "filters": [
+                    [
+                        "name", "in", ["Quotation Workflow"]
+                    ]
+                ]
+             },
+            {"dt": "Role",
+                "filters": [
+                    [
+                        "name", "in", ["Sales Engineer"]
+                    ]
+                ]
+             }
+            ]
+
 # Includes in <head>
 # ------------------
 
@@ -142,4 +173,3 @@ app_license = "MIT"
 # exempt linked doctypes from being automatically cancelled
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
-
