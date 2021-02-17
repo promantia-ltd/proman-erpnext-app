@@ -39,7 +39,13 @@ fixtures = ["Workflow State",
                         "name", "in", ["Sales Engineer"]
                     ]
                 ]
-             }
+             },
+             {"dt": 'Custom DocPerm',
+                "filters": [
+                    [
+                        "name", "in", ['d522aaa657', 'bfa0316c44', 'bf106596f2', 'd21861c027', '7e3c8a8f8c']
+                    ]
+                ]}
             ]
 
 # Includes in <head>
