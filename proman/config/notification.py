@@ -11,16 +11,20 @@ def lead_notify_on_save(recipients, phone, mobile_no):
         full_name = ''
         name = frappe.get_doc('User', {'email': recipients}, ['*']).as_dict()
         try:
-            ##### if email notification is required
-            # content = f"""Dear Sales Engineer,
-            #             The {full_name} Lead is assigned to you for communication and followup. Please do the needful.
-            #             Regards,
+            content = f"""Dear Sales Engineer,
+                        The {full_name} Lead is assigned to you for communication and followup. Please do the needful.
+                        Regards,
 
-            #             CRM Team
-            #             """
+                        CRM Team
+                        """
             # subject = 'Lead Assignment'
+            ##### if email notification is required
             # make(content=content, subject=subject, send_email=True)
             if mobile_no is not None:
                 send_sms([int(mobile_no)], content)
         except:
-            frappe.msgprint('Could not send the Email')
+            frappe.msgprint('Could not send the Message')
+
+@frappe.whitelist()
+def stock_receipt_on_submit(self):
+    print(self)

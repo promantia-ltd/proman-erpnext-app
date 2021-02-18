@@ -133,5 +133,32 @@
   "share": 0,
   "submit": 0,
   "write": 0
+ },
+ {
+  "amend": 0,
+  "cancel": 0,
+  "create": 1,
+  "delete": 0,
+  "docstatus": 0,
+  "doctype": "Custom DocPerm",
+  "email": 0,
+  "export": 1,
+  "if_owner": 0,
+  "import": 0,
+  "modified": "2021-02-17 18:06:37.858738",
+  "name": "77f91b8e14",
+  "parent": "Quality Inspection",
+  "parentfield": "permissions",
+  "parenttype": "DocType",
+  "permlevel": 0,
+  "print": 0,
+  "read": 1,
+  "report": 0,
+  "role": "Quality Person",
+  "select": 1,
+  "set_user_permissions": 0,
+  "share": 0,
+  "submit": 0,
+  "write": 0
  }
 ]
