@@ -117,5 +117,22 @@
   "property_type": "Check",
   "row_name": null,
   "value": "1"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Employee",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "naming_series",
+  "modified": "2021-02-19 14:11:28.338671",
+  "name": "Employee-naming_series-label",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "label",
+  "property_type": "Data",
+  "row_name": null,
+  "value": "Emp ID"
  }
 ]

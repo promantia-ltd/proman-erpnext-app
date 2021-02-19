@@ -16,14 +16,69 @@ fixtures = ["Workflow State",
             {"dt": "Property Setter",
              "filters": [
                  [
-                     "name", "in", ["Lead-contact_by-reqd", "Lead-contact_date-reqd", "Lead-ends_on-reqd",
-                                    "Lead-notes-reqd", "Lead-phone-reqd", "Lead-mobile_no-reqd", "Lead-fax-reqd"]
+                     "name", "in", ["Lead-contact_by-reqd", 
+                                    "Lead-contact_date-reqd", 
+                                    "Lead-ends_on-reqd",
+                                    "Lead-notes-reqd", "Lead-phone-reqd", 
+                                    "Lead-mobile_no-reqd", 
+                                    "Lead-fax-reqd",
+                                    "Employee-naming_series-label"
+                                    
+                                    
+                                ]
                  ]
              ]},
             {"dt": "Custom Field",
                 "filters": [
                     [
-                        "name", "in", ["Lead-remarks", "Lead-influencer"]
+                        "name", "in", ["Lead-remarks", 
+                                       "Lead-influencer",
+                                       "Job Applicant-alternate_mail",
+                                       "Job Applicant-column_break_20",
+                                       "Job Applicant-current_place_of_employment",
+                                       "Job Applicant-years_of_experience",
+                                       "Job Applicant-column_break_19",
+                                       "Job Applicant-comments",
+                                       "Job Applicant-more_info",
+                                       "Job Applicant-alternate_number",
+                                       "Job Applicant-primary_number",
+                                       "Job Applicant-primary_mail",
+                                       "Job Applicant-personal_details",
+                                       "Job Applicant-notice_period_days",
+                                       "Job Applicant-date_of_birth",
+                                       "Job Applicant-expected_ctc",
+                                       "Job Applicant-locality",
+                                       "Job Applicant-current_job_title",
+                                       "Job Applicant-current_ctc",
+                                       "Job Applicant-applicant_details",
+                                       "Job Applicant-academic_details_table",
+                                       "Job Applicant-academic_details",
+                                       "Employee-posting_date",
+                                       "Employee-location",
+                                       "Employee-ctc_at_the_time_of_joining",
+                                       "Employee-current_ctc",
+                                       "Employee-confirmation_status",
+                                       "Employee Internal Work History-current_experience",
+                                       "Employee-age",
+                                       "Employee-religion",
+                                       "Employee-fathers_name",
+                                       "Employee-aadhar_number",
+                                       "Employee-uan_number",
+                                       "Employee-esi_number",
+                                       "Employee-official_contact_number",
+                                       "Employee-bank_details",
+                                       "Employee-personal_bank_account_number",
+                                       "Employee-bank_account_details",
+                                       "Employee-bank_address",
+                                       "Employee-personal_bank_details",
+                                       "Employee-ifs_code",
+                                       "Employee-nominee_name",
+                                       "Employee-nominee_relation",
+                                       "Employee Internal Work History-last_increment_date",
+                                       "Employee Internal Work History-last_promotion_date",
+                                       "Employee-gratuity",
+                                       "Employee External Work History-previous_uan_number"
+                                    ]
                     ]
                 ]},
             {"dt": 'Workflow',
@@ -36,14 +91,16 @@ fixtures = ["Workflow State",
             {"dt": "Role",
                 "filters": [
                     [
-                        "name", "in", ["Sales Engineer"]
+                        "name", "in", ["Sales Engineer", "Quality Persion"]
                     ]
                 ]
              },
             {"dt": 'Custom DocPerm',
                 "filters": [
                     [
-                        "role", "in", ['Sales Engineer', 'Quality Person']
+                        "role", "in", ['Sales Engineer', 
+                                       'Quality Person',
+                                       "Accounts Manager"]
                     ]
                 ]
              },
@@ -55,7 +112,8 @@ fixtures = ["Workflow State",
             {'dt': "Custom Script",
                 "filters": [
                     [
-                        "name", "in", ["Lead-Client", "Purchase Receipt-Client"]
+                        "name", "in", ["Lead-Client", 
+                                       "Purchase Receipt-Client"]
                     ]
                 ]
 
