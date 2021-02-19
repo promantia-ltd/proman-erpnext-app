@@ -48,10 +48,18 @@ fixtures = ["Workflow State",
                 ]
              },
             {"dt": "Notification",
-             "filters": [
-                 "is_standard != 1"
-             ]
+                "filters": [
+                    "is_standard != 1"
+                ]
              },
+            {'dt': "Custom Script",
+                "filters": [
+                    [
+                        "name", "in", ["Lead-Client", "Purchase Receipt-Client"]
+                    ]
+                ]
+
+             }
             ]
 
 # Includes in <head>

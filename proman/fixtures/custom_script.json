@@ -1,0 +1,26 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Lead",
+  "enabled": 1,
+  "modified": "2021-02-19 08:52:21.677458",
+  "name": "Lead-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Lead', {\n\tafter_save: function(frm){\n\t    frappe.call({\n\t        method: 'proman.config.notification.lead_notify_on_save',\n\t        args: {\n\t            'recipients': frm.doc.contact_by,\n\t            'phone': frm.doc.phone,\n\t            'mobile_no': frm.doc.mobile_no\n\t        },\n\t        callback: function(r){}\n\t    })\n\t}\n})"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Purchase Receipt",
+  "enabled": 0,
+  "modified": "2021-02-19 08:56:32.564878",
+  "name": "Purchase Receipt-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Purchase Receipt', {\n\ton_submit: function(frm, cdt, cdn){\n\t    frappe.call({\n\t        method:'proman.config.notification.purchase_receipt_on_submit',\n\t        args:{\n\t            \"doc\":frm.doc\n\t        },\n\t        callback:function(r){}\n\t    })\n\t}\n})"
+ }
+]
