@@ -16,22 +16,22 @@ fixtures = ["Workflow State",
             {"dt": "Property Setter",
              "filters": [
                  [
-                     "name", "in", ["Lead-contact_by-reqd", 
-                                    "Lead-contact_date-reqd", 
+                     "name", "in", ["Lead-contact_by-reqd",
+                                    "Lead-contact_date-reqd",
                                     "Lead-ends_on-reqd",
-                                    "Lead-notes-reqd", "Lead-phone-reqd", 
-                                    "Lead-mobile_no-reqd", 
+                                    "Lead-notes-reqd", "Lead-phone-reqd",
+                                    "Lead-mobile_no-reqd",
                                     "Lead-fax-reqd",
                                     "Employee-naming_series-label"
-                                    
-                                    
-                                ]
+
+
+                                    ]
                  ]
              ]},
             {"dt": "Custom Field",
                 "filters": [
                     [
-                        "name", "in", ["Lead-remarks", 
+                        "name", "in", ["Lead-remarks",
                                        "Lead-influencer",
                                        "Job Applicant-alternate_mail",
                                        "Job Applicant-column_break_20",
@@ -80,7 +80,7 @@ fixtures = ["Workflow State",
                                        "Employee External Work History-previous_uan_number",
                                        "Employee-accident_insurance",
                                        "Employee-mobile_number"
-                                    ]
+                                       ]
                     ]
                 ]},
             {"dt": 'Workflow',
@@ -96,8 +96,8 @@ fixtures = ["Workflow State",
             {"dt": "Role",
                 "filters": [
                     [
-                        "name", "in", ["Sales Engineer", 
-                                       "Quality Persion", 
+                        "name", "in", ["Sales Engineer",
+                                       "Quality Persion",
                                        "Vendor Development",
                                        "Managing Director",
                                        "Sales Co-ordinator",
@@ -112,7 +112,7 @@ fixtures = ["Workflow State",
             {"dt": 'Custom DocPerm',
                 "filters": [
                     [
-                        "role", "in", ['Sales Engineer', 
+                        "role", "in", ['Sales Engineer',
                                        'Quality Person',
                                        "Accounts Manager",
                                        "Vendor Development",
@@ -131,23 +131,23 @@ fixtures = ["Workflow State",
                     "is_standard != 1"
                 ]
              },
+
             {'dt': "Custom Script",
                 "filters": [
                     [
-                        "name", "in", ["Lead-Client", 
+                        "name", "in", ["Lead-Client",
                                        "Purchase Receipt-Client"
                                        ]
                     ]
                 ]
-
-             }git 
+             }
             ]
 
 doc_events = {
-        "Employee": {
-            "validate": "proman.config.validations.validate_employee_posting_date"
-        }
+    "Employee": {
+        "validate": "proman.config.validations.validate_employee_posting_date"
     }
+}
 
 # Includes in <head>
 # ------------------
