@@ -57,4 +57,3 @@ def purchase_receipt_on_submit(doc):
             make(content=content=, subject=f'Rejected Items in {doc['name']}', send_email=True, recipients=email_list)
         except:
             frappe.msgprint('Could not send email')
-            

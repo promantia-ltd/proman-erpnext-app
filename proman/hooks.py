@@ -77,21 +77,27 @@ fixtures = ["Workflow State",
                                        "Employee Internal Work History-last_increment_date",
                                        "Employee Internal Work History-last_promotion_date",
                                        "Employee-gratuity",
-                                       "Employee External Work History-previous_uan_number"
+                                       "Employee External Work History-previous_uan_number",
+                                       "Employee-accident_insurance",
+                                       "Employee-mobile_number"
                                     ]
                     ]
                 ]},
             {"dt": 'Workflow',
                 "filters": [
                     [
-                        "name", "in", ["Quotation Workflow"]
+                        "name", "in", ["Quotation Workflow",
+                                       "Employee Internal Transfer"]
                     ]
                 ]
              },
             {"dt": "Role",
                 "filters": [
                     [
-                        "name", "in", ["Sales Engineer", "Quality Persion"]
+                        "name", "in", ["Sales Engineer", 
+                                       "Quality Persion", 
+                                       "Vendor Development",
+                                       "Managing Director"]
                     ]
                 ]
              },
