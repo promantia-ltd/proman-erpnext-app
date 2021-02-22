@@ -324,5 +324,179 @@
   ],
   "workflow_name": "Employee Internal Transfer",
   "workflow_state_field": "workflow_state"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Blanket Order",
+  "is_active": 1,
+  "modified": "2021-02-22 18:14:54.446777",
+  "name": "Blanket Order",
+  "override_status": 0,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "send_email_alert": 1,
+  "states": [
+   {
+    "allow_edit": "Production User",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Draft",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Production User",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Awaiting MD Approval",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "MD",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "MD Approved",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "MD",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "MD Rejected",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Production User",
+    "doc_status": "2",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Cancelled",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Production User",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Blanket Order",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Submitted",
+    "update_field": null,
+    "update_value": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Send For Approval",
+    "allow_self_approval": 1,
+    "allowed": "Production User",
+    "condition": "doc.blanket_order_type=='Selling'",
+    "next_state": "Awaiting MD Approval",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Draft"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "MD",
+    "condition": "doc.blanket_order_type=='Selling'",
+    "next_state": "MD Approved",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Awaiting MD Approval"
+   },
+   {
+    "action": "Reject",
+    "allow_self_approval": 1,
+    "allowed": "MD",
+    "condition": "doc.blanket_order_type=='Selling'",
+    "next_state": "MD Rejected",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Awaiting MD Approval"
+   },
+   {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Production User",
+    "condition": "",
+    "next_state": "Cancelled",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "MD Approved"
+   },
+   {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Production User",
+    "condition": "doc.blanket_order_type=='Selling'",
+    "next_state": "Cancelled",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "MD Rejected"
+   },
+   {
+    "action": "Submit",
+    "allow_self_approval": 1,
+    "allowed": "Production User",
+    "condition": null,
+    "next_state": "Submitted",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Draft"
+   },
+   {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Production User",
+    "condition": null,
+    "next_state": "Cancelled",
+    "parent": "Blanket Order",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Submitted"
+   }
+  ],
+  "workflow_name": "Blanket Order",
+  "workflow_state_field": "workflow_state"
  }
 ]

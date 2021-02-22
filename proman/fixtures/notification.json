@@ -56,7 +56,7 @@
   "is_standard": 0,
   "message": "The record {{doc.name}} status has not been changed since 7 days.",
   "method": null,
-  "modified": "2021-02-18 11:55:51.276821",
+  "modified": "2021-02-22 17:48:47.797108",
   "module": null,
   "name": "Lead Status Sms",
   "parent": null,
@@ -74,6 +74,26 @@
     "parenttype": "Notification",
     "receiver_by_document_field": "mobile_no",
     "receiver_by_role": "Sales Manager"
+   },
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Lead Status Sms",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Sales Co-ordinator"
+   },
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Lead Status Sms",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "General"
    }
   ],
   "send_system_notification": 1,

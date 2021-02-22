@@ -87,7 +87,9 @@ fixtures = ["Workflow State",
                 "filters": [
                     [
                         "name", "in", ["Quotation Workflow",
-                                       "Employee Internal Transfer"]
+                                       "Employee Internal Transfer",
+                                       "Blanket Order"
+                                       ]
                     ]
                 ]
              },
@@ -97,7 +99,13 @@ fixtures = ["Workflow State",
                         "name", "in", ["Sales Engineer", 
                                        "Quality Persion", 
                                        "Vendor Development",
-                                       "Managing Director"]
+                                       "Managing Director",
+                                       "Sales Co-ordinator",
+                                       "General",
+                                       "HQ",
+                                       "Production User",
+                                       "MD"
+                                       ]
                     ]
                 ]
              },
@@ -106,7 +114,15 @@ fixtures = ["Workflow State",
                     [
                         "role", "in", ['Sales Engineer', 
                                        'Quality Person',
-                                       "Accounts Manager"]
+                                       "Accounts Manager",
+                                       "Vendor Development",
+                                       "Managing Director",
+                                       "Sales Co-ordinator",
+                                       "General",
+                                       "HQ",
+                                       "Production User",
+                                       "MD"
+                                       ]
                     ]
                 ]
              },
@@ -119,12 +135,19 @@ fixtures = ["Workflow State",
                 "filters": [
                     [
                         "name", "in", ["Lead-Client", 
-                                       "Purchase Receipt-Client"]
+                                       "Purchase Receipt-Client"
+                                       ]
                     ]
                 ]
 
-             }
+             }git 
             ]
+
+doc_events = {
+        "Employee": {
+            "validate": "proman.config.validations.validate_employee_posting_date"
+        }
+    }
 
 # Includes in <head>
 # ------------------
