@@ -22,5 +22,17 @@
   "parentfield": null,
   "parenttype": null,
   "script": "frappe.ui.form.on('Purchase Receipt', {\n\ton_submit: function(frm, cdt, cdn){\n\t    frappe.call({\n\t        method:'proman.config.notification.purchase_receipt_on_submit',\n\t        args:{\n\t            \"doc\":frm.doc\n\t        },\n\t        callback:function(r){}\n\t    })\n\t}\n})"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2021-02-25 19:08:33.670367",
+  "name": "Quotation-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "\n\nfrappe.ui.form.on('Quotation', {\n    refresh: function(frm, cdt, cdn) {\n        if(frm.doc.workflow_state === \"Approved\"){\n            frm.add_custom_button(__('Set as Lost'), () => {\n\t\t\t\tset_as_lost_dialog(frm);\n\t\t\t});\n        }\n    }\n})\n\n\nfunction set_as_lost_dialog(frm) {\n\tvar dialog = new frappe.ui.Dialog({\n\t\ttitle: __(\"Set as Lost\"),\n\t\tfields: [\n\t\t\t{\n\t\t\t\t\"fieldtype\": \"Table MultiSelect\",\n\t\t\t\t\"label\": __(\"Lost Reasons\"),\n\t\t\t\t\"fieldname\": \"lost_reason\",\n\t\t\t\t\"options\": frm.doctype === 'Opportunity' ? 'Opportunity Lost Reason Detail': 'Quotation Lost Reason Detail',\n\t\t\t\t\"reqd\": 1\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"fieldtype\": \"Text\",\n\t\t\t\t\"label\": __(\"Detailed Reason\"),\n\t\t\t\t\"fieldname\": \"detailed_reason\"\n\t\t\t},\n\t\t],\n\t\tprimary_action: function() {\n\t\t\tvar values = dialog.get_values();\n\t\t\tvar reasons = values[\"lost_reason\"];\n\t\t\tvar detailed_reason = values[\"detailed_reason\"];\n\n\t\t\tfrm.call({\n\t\t\t\tdoc: frm.doc,\n\t\t\t\tmethod: 'declare_enquiry_lost',\n\t\t\t\targs: {\n\t\t\t\t\t'lost_reasons_list': reasons,\n\t\t\t\t\t'detailed_reason': detailed_reason\n\t\t\t\t},\n\t\t\t\tcallback: function(r) {\n\t\t\t\t\tdialog.hide();\n\t\t\t\t\tfrm.reload_doc();\n\t\t\t\t\tfrm.call({\n\t\t\t\t\t    method:'proman.config.workflows.set_quotation_as_lost',\n\t\t\t\t\t    args:{\n\t\t\t\t\t        'doc_name': frm.doc.name\n\t\t\t\t\t    },\n\t\t\t\t\t    callback: function(r){\n\t\t\t\t\t        window.location.reload();\n\t\t\t\t\t    }\n\t\t\t\t\t})\n\t\t\t\t},\n\t\t\t});\n\t\t\trefresh_field(\"lost_reason\");\n\t\t},\n\t\tprimary_action_label: __('Declare Lost')\n\t});\n\n\tdialog.show();\n}"
  }
 ]

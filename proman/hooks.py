@@ -79,7 +79,8 @@ fixtures = ["Workflow State",
                                        "Employee-gratuity",
                                        "Employee External Work History-previous_uan_number",
                                        "Employee-accident_insurance",
-                                       "Employee-mobile_number"
+                                       "Employee-mobile_number",
+                                       "Quality Inspection-head_number"
                                        ]
                     ]
                 ]},
@@ -99,7 +100,6 @@ fixtures = ["Workflow State",
                         "name", "in", ["Sales Engineer",
                                        "Quality Persion",
                                        "Vendor Development",
-                                       "Managing Director",
                                        "Sales Co-ordinator",
                                        "General",
                                        "HQ",
@@ -109,23 +109,23 @@ fixtures = ["Workflow State",
                     ]
                 ]
              },
-            {"dt": 'Custom DocPerm',
-                "filters": [
-                    [
-                        "role", "in", ['Sales Engineer',
-                                       'Quality Person',
-                                       "Accounts Manager",
-                                       "Vendor Development",
-                                       "Managing Director",
-                                       "Sales Co-ordinator",
-                                       "General",
-                                       "HQ",
-                                       "Production User",
-                                       "MD"
-                                       ]
-                    ]
-                ]
-             },
+            # {"dt": 'Custom DocPerm',
+            #     "filters": [
+            #         [
+            #             "role", "in", ['Sales Engineer',
+            #                            'Quality Person',
+            #                            "Accounts Manager",
+            #                            "Vendor Development",
+            #                            "Managing Director",
+            #                            "Sales Co-ordinator",
+            #                            "General",
+            #                            "HQ",
+            #                            "Production User",
+            #                            "MD"
+            #                            ]
+            #         ]
+            #     ]
+            #  },
             {"dt": "Notification",
                 "filters": [
                     "is_standard != 1"
@@ -136,7 +136,8 @@ fixtures = ["Workflow State",
                 "filters": [
                     [
                         "name", "in", ["Lead-Client",
-                                       "Purchase Receipt-Client"
+                                       "Purchase Receipt-Client",
+                                       "Quotation-Client"
                                        ]
                     ]
                 ]
