@@ -241,23 +241,23 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"proman.tasks.all"
-# 	],
-# 	"daily": [
-# 		"proman.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"proman.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"proman.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"proman.tasks.monthly"
-# 	]
-# }
+scheduler_events = {
+	# "all": [
+	# 	"proman.tasks.all"
+	# ],
+	"daily": [
+		"proman.config.notification.send_notification_on_unpaid_sales_invoice"
+	],
+	# "hourly": [
+	# 	"proman.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"proman.tasks.weekly"
+	# ]
+	# "monthly": [
+	# 	"proman.tasks.monthly"
+	# ]
+}
 
 # Testing
 # -------
