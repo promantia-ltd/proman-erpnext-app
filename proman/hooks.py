@@ -80,7 +80,7 @@ fixtures = ["Workflow State",
                                        "Employee External Work History-previous_uan_number",
                                        "Employee-accident_insurance",
                                        "Employee-mobile_number",
-                                       "Quality Inspection-head_number"
+                                       "Quality Inspection-heat_number"
                                        ]
                     ]
                 ]},
