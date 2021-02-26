@@ -2,7 +2,7 @@
  {
   "attach_print": 0,
   "channel": "Email",
-  "condition": "doc.status==\"Unpaid\"",
+  "condition": "doc.status!=\"Paid\"",
   "date_changed": "creation",
   "days_in_advance": 7,
   "docstatus": 0,
@@ -13,7 +13,7 @@
   "is_standard": 0,
   "message": "<h1><strong>Sales Invoice Reminder</strong></h1>\n<h2><span style=\"color: rgb(102, 185, 102);\">Sales Invoice Details:</span>\n</h2><table class=\"table table-bordered\"><tbody>\n<tr><td data-row=\"insert-column-right\"><strong>Sales Invoice</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.name }}</strong></td>\n</tr><tr><td data-row=\"insert-row-below\"><strong>Customer Name</strong></td>\n<td data-row=\"insert-row-below\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.customer_name }}</strong></td></tr>\n<tr><td data-row=\"insert-column-right\"><strong>Due Date</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ frappe.utils.formatdate(doc.get_formatted('due_date'), \"dd-mm-yyyy\") }}</strong></td>\n</tr><tr><td data-row=\"row-zajk\">\n<strong>View Document in ERPNext</strong></td><td data-row=\"row-mze0\">\n<strong style=\"color: rgb(230, 0, 0);\"><a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\" target=\"_blank\" class=\"btn btn-success\">Click to view document</a></strong></td></tr><tr><td data-row=\"row-779i\">\n<strong>Note</strong></td><td data-row=\"row-779i\">\n<strong style=\"color: rgb(255, 153, 0);\">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>",
   "method": null,
-  "modified": "2021-02-23 12:05:27.967382",
+  "modified": "2021-02-26 11:08:07.112950",
   "module": null,
   "name": "Sales Invoice Notification",
   "parent": null,
@@ -30,7 +30,7 @@
     "parentfield": "recipients",
     "parenttype": "Notification",
     "receiver_by_document_field": null,
-    "receiver_by_role": "Sales Manager"
+    "receiver_by_role": "Sales Engineer"
    }
   ],
   "send_system_notification": 1,
@@ -117,9 +117,9 @@
   "enabled": 1,
   "event": "Submit",
   "is_standard": 0,
-  "message": "<h1><strong>Sales Order Reminder</strong></h1>\n<h2><span style=\"color: rgb(102, 185, 102);\">Sales Order Details:</span>\n</h2><table class=\"table table-bordered\"><tbody>\n<tr><td data-row=\"insert-column-right\"><strong>Sales Order</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.name }}</strong></td>\n</tr><tr><td data-row=\"insert-row-below\"><strong>Customer Name</strong></td>\n<td data-row=\"insert-row-below\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.customer_name }}</strong></td></tr>\n<tr><td data-row=\"insert-column-right\"><strong>Delivery Date</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ frappe.utils.formatdate(doc.get_formatted('delivery_date'), \"dd-mm-yyyy\") }}</strong></td>\n</tr><tr><td data-row=\"row-zajk\">\n<strong>View Document in ERPNext</strong></td><td data-row=\"row-mze0\">\n<strong style=\"color: rgb(230, 0, 0);\"><a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\" target=\"_blank\" class=\"btn btn-success\">Click to view document</a></strong></td></tr><tr><td data-row=\"row-779i\">\n<strong>Note</strong></td><td data-row=\"row-779i\">\n<strong style=\"color: rgb(255, 153, 0);\">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>",
+  "message": "<h2><span style=\"color: rgb(102, 185, 102);\">Sales Order Details:</span>\n</h2><table class=\"table table-bordered\"><tbody>\n<tr><td data-row=\"insert-column-right\"><strong>Sales Order</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.name }}</strong></td>\n</tr><tr><td data-row=\"insert-row-below\"><strong>Customer Name</strong></td>\n<td data-row=\"insert-row-below\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.customer_name }}</strong></td></tr>\n<tr><td data-row=\"insert-column-right\"><strong>Delivery Date</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ frappe.utils.formatdate(doc.get_formatted('delivery_date'), \"dd-mm-yyyy\") }}</strong></td>\n</tr><tr><td data-row=\"row-zajk\">\n<strong>View Document in ERPNext</strong></td><td data-row=\"row-mze0\">\n<strong style=\"color: rgb(230, 0, 0);\"><a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\" target=\"_blank\" class=\"btn btn-success\">Click to view document</a></strong></td></tr><tr><td data-row=\"row-779i\">\n<strong>Note</strong></td><td data-row=\"row-779i\">\n<strong style=\"color: rgb(255, 153, 0);\">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>",
   "method": null,
-  "modified": "2021-02-23 11:59:48.929653",
+  "modified": "2021-02-26 10:54:29.493803",
   "module": null,
   "name": "Sales Order Submit",
   "parent": null,
