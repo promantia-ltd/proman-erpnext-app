@@ -640,5 +640,68 @@
   "slack_webhook_url": null,
   "subject": "Document {{doc.name}} Awaiting MD Approval.",
   "value_changed": "workflow_state"
+ },
+ {
+  "attach_print": 0,
+  "channel": "Email",
+  "condition": "doc.rejected_warehouse != None",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Purchase Receipt",
+  "enabled": 1,
+  "event": "Submit",
+  "is_standard": 0,
+  "message": "Add your message here",
+  "method": null,
+  "modified": "2021-02-26 11:52:06.101547",
+  "module": null,
+  "name": "Purchase Receipt On Submit for Rejected items",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Purchase Receipt On Submit for Rejected items",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "HQ"
+   },
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Purchase Receipt On Submit for Rejected items",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Accounts Manager"
+   },
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Purchase Receipt On Submit for Rejected items",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Purchase Manager"
+   }
+  ],
+  "send_system_notification": 1,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Rejected Items in {{doc.name}} ",
+  "value_changed": null
  }
 ]
