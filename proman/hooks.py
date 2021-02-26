@@ -33,6 +33,7 @@ fixtures = ["Workflow State",
                     [
                         "name", "in", ["Lead-remarks",
                                        "Lead-influencer",
+                                       "Lead-sales_engineer_name",
                                        "Job Applicant-alternate_mail",
                                        "Job Applicant-column_break_20",
                                        "Job Applicant-current_place_of_employment",
@@ -135,9 +136,7 @@ fixtures = ["Workflow State",
             {'dt': "Custom Script",
                 "filters": [
                     [
-                        "name", "in", ["Lead-Client",
-                                       "Purchase Receipt-Client",
-                                       "Quotation-Client"
+                        "name", "in", ["Quotation-Client"
                                        ]
                     ]
                 ]
@@ -245,9 +244,9 @@ scheduler_events = {
 	# "all": [
 	# 	"proman.tasks.all"
 	# ],
-	"daily": [
-		"proman.config.notification.send_notification_on_unpaid_sales_invoice"
-	],
+	# "daily": [
+	# 	"proman.config.notification.send_notification_on_unpaid_sales_invoice"
+	# ],
 	# "hourly": [
 	# 	"proman.tasks.hourly"
 	# ],

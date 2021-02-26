@@ -703,5 +703,48 @@
   "slack_webhook_url": null,
   "subject": "Rejected Items in {{doc.name}} ",
   "value_changed": null
+ },
+ {
+  "attach_print": 0,
+  "channel": "SMS",
+  "condition": "doc.contact_by != \"\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Lead",
+  "enabled": 1,
+  "event": "Save",
+  "is_standard": 0,
+  "message": "Dear {{ doc.sales_engineer_name }},\nThe {{ doc.lead_name }} Lead is assigned to you for communication and followup. Please do the needful.\nRegards,\nCRM Team",
+  "method": null,
+  "modified": "2021-02-26 16:50:36.247098",
+  "module": null,
+  "name": "Sales Engineer sms on lead creation",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Sales Engineer sms on lead creation",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "mobile_no",
+    "receiver_by_role": null
+   }
+  ],
+  "send_system_notification": 1,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": null,
+  "value_changed": null
  }
 ]

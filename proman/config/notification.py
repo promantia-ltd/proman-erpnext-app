@@ -7,27 +7,6 @@ import json
 
 
 @frappe.whitelist()
-def lead_notify_on_save(recipients, phone, mobile_no):
-    if recipients is not None:
-        full_name = ''
-        name = frappe.get_doc('User', {'email': recipients}, ['*']).as_dict()
-        try:
-            content = f"""Dear Sales Engineer,
-                        The {name.full_name} Lead is assigned to you for communication and followup. Please do the needful.
-                        Regards,
-
-                        CRM Team
-                        """
-            # subject = 'Lead Assignment'
-            # if email notification is required
-            # make(content=content, subject=subject, send_email=True)
-            if mobile_no is not None:
-                send_sms([int(mobile_no)], content)
-        except:
-            frappe.msgprint('Could not send the SMS/Email Message')
-
-
-@frappe.whitelist()
 def purchase_receipt_on_submit(doc):
     rejected_items = []
     try:
@@ -56,36 +35,36 @@ def purchase_receipt_on_submit(doc):
             frappe.msgprint('Could not send email')
     
 # @frappe.whitelist()
-def send_notification_on_unpaid_sales_invoice(self, method): # self, method
-    records = frappe.get_all('Sales Invoice', {'posting_date': ['<=', date.today() - timedelta(days=7)], 'status': 'Unpaid'})
-    # query = """select distinct r.parent from `tabHas Role` r, `tabUser` p where p.name = r.parent and p.enabled = 1 and p.docstatus < 2 and r.role='Sales Engineer' and p.name not in ('Administrator', 'All', 'Guest')"""
-    # roles = frappe.db.sql_list(query)
-    if len(records) != 0:
-        for r in records:
-            record = frappe.get_doc('Sales Invoice', r, ['*'])
-            sales_persons_list = [r.sales_person for r in record.sales_team]
-            if len(sales_persons_list) != 0:
-                employee_id_list = frappe.get_list('Sales Person', filters={'sales_person_name': ['in', sales_persons_list], 'enabled': 1}, fields=['employee'])
-                employee_id_list = [e.employee for e in employee_id_list]
-                if len(employee_id_list) != 0:
-                    email_list = frappe.get_list('Employee', filters={'name': ['in', employee_id_list], 'status': 'Active'}, fields=['company_email'])
-                    email_list = [e.company_email for e in email_list]
-                    if len(email_list) !=0:
-                        content = """
-                                <h1><strong>Sales Invoice Reminder</strong></h1>
-                                <h2><span style="color: rgb(102, 185, 102);">Sales Invoice Details:</span>
-                                </h2><table class="table table-bordered"><tbody>
-                                <tr><td data-row="insert-column-right"><strong>Sales Invoice Due</strong></td>
-                                <td data-row="insert-column-right"><strong style="color: rgb(107, 36, 178);">{name}</strong></td>
-                                </tr><tr><td data-row="insert-row-below"><strong>Customer Name</strong></td>
-                                <td data-row="insert-row-below"><strong style="color: rgb(107, 36, 178);">{customer_name}</strong></td></tr>
-                                <tr><td data-row="insert-column-right"><strong>Due Date</strong></td>
-                                <td data-row="insert-column-right"><strong style="color: rgb(107, 36, 178);">{due_date}</strong></td>
-                                </tr><tr><td data-row="row-zajk">
-                                <strong>View Document in ERPNext</strong></td><td data-row="row-mze0">
-                                <strong style="color: rgb(230, 0, 0);"><a href="{link}" target="_blank" class="btn btn-success">Click to view document</a></strong></td></tr><tr><td data-row="row-779i">
-                                <strong>Note</strong></td><td data-row="row-779i">
-                                <strong style="color: rgb(255, 153, 0);">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>
-                        """.format(name=record.name, customer_name=record.customer_name, due_date=frappe.utils.formatdate(record.get_formatted('due_date'), "dd-mm-yyyy"),
-                                    link=frappe.utils.get_url_to_form(record.doctype, record.name))
-                        make(content=content, subject="Payment due reminder.", recipients=email_list, send_email=True)
+# def send_notification_on_unpaid_sales_invoice(self, method): # self, method
+#     records = frappe.get_all('Sales Invoice', {'posting_date': ['<=', date.today() - timedelta(days=0)], 'status': 'Unpaid'})
+#     # query = """select distinct r.parent from `tabHas Role` r, `tabUser` p where p.name = r.parent and p.enabled = 1 and p.docstatus < 2 and r.role='Sales Engineer' and p.name not in ('Administrator', 'All', 'Guest')"""
+#     # roles = frappe.db.sql_list(query)
+#     if len(records) != 0:
+#         for r in records:
+#             record = frappe.get_doc('Sales Invoice', r, ['*'])
+#             sales_persons_list = [r.sales_person for r in record.sales_team]
+#             if len(sales_persons_list) != 0:
+#                 employee_id_list = frappe.get_list('Sales Person', filters={'sales_person_name': ['in', sales_persons_list], 'enabled': 1}, fields=['employee'])
+#                 employee_id_list = [e.employee for e in employee_id_list]
+#                 if len(employee_id_list) != 0:
+#                     email_list = frappe.get_list('Employee', filters={'name': ['in', employee_id_list], 'status': 'Active'}, fields=['company_email'])
+#                     email_list = [e.company_email for e in email_list]
+#                     if len(email_list) !=0:
+#                         content = """
+#                                 <h1><strong>Sales Invoice Reminder</strong></h1>
+#                                 <h2><span style="color: rgb(102, 185, 102);">Sales Invoice Details:</span>
+#                                 </h2><table class="table table-bordered"><tbody>
+#                                 <tr><td data-row="insert-column-right"><strong>Sales Invoice Due</strong></td>
+#                                 <td data-row="insert-column-right"><strong style="color: rgb(107, 36, 178);">{name}</strong></td>
+#                                 </tr><tr><td data-row="insert-row-below"><strong>Customer Name</strong></td>
+#                                 <td data-row="insert-row-below"><strong style="color: rgb(107, 36, 178);">{customer_name}</strong></td></tr>
+#                                 <tr><td data-row="insert-column-right"><strong>Due Date</strong></td>
+#                                 <td data-row="insert-column-right"><strong style="color: rgb(107, 36, 178);">{due_date}</strong></td>
+#                                 </tr><tr><td data-row="row-zajk">
+#                                 <strong>View Document in ERPNext</strong></td><td data-row="row-mze0">
+#                                 <strong style="color: rgb(230, 0, 0);"><a href="{link}" target="_blank" class="btn btn-success">Click to view document</a></strong></td></tr><tr><td data-row="row-779i">
+#                                 <strong>Note</strong></td><td data-row="row-779i">
+#                                 <strong style="color: rgb(255, 153, 0);">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>
+#                         """.format(name=record.name, customer_name=record.customer_name, due_date=frappe.utils.formatdate(record.get_formatted('due_date'), "dd-mm-yyyy"),
+#                                     link=frappe.utils.get_url_to_form(record.doctype, record.name))
+#                         make(content=content, subject="Payment due reminder.", recipients=email_list, send_email=True)
