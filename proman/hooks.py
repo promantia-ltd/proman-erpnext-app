@@ -12,7 +12,7 @@ app_email = "proman_app@gmail.com"
 app_license = "MIT"
 
 
-fixtures = ["Workflow State",
+fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script",
             {"dt": "Property Setter",
              "filters": [
                  [
@@ -85,16 +85,6 @@ fixtures = ["Workflow State",
                                        ]
                     ]
                 ]},
-            {"dt": 'Workflow',
-                "filters": [
-                    [
-                        "name", "in", ["Quotation Workflow",
-                                       "Employee Internal Transfer",
-                                       "Blanket Order"
-                                       ]
-                    ]
-                ]
-             },
             {"dt": "Role",
                 "filters": [
                     [
