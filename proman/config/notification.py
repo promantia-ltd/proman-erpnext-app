@@ -56,8 +56,8 @@ def purchase_receipt_on_submit(doc):
             frappe.msgprint('Could not send email')
     
 # @frappe.whitelist()
-def send_notification_on_unpaid_sales_invoice(): # self, method
-    records = frappe.get_all('Sales Invoice', {'posting_date': ['<=', date.today() - timedelta(days=0)], 'status': 'Unpaid'})
+def send_notification_on_unpaid_sales_invoice(self, method): # self, method
+    records = frappe.get_all('Sales Invoice', {'posting_date': ['<=', date.today() - timedelta(days=7)], 'status': 'Unpaid'})
     # query = """select distinct r.parent from `tabHas Role` r, `tabUser` p where p.name = r.parent and p.enabled = 1 and p.docstatus < 2 and r.role='Sales Engineer' and p.name not in ('Administrator', 'All', 'Guest')"""
     # roles = frappe.db.sql_list(query)
     if len(records) != 0:
