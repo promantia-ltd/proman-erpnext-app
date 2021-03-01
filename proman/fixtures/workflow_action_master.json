@@ -58,5 +58,15 @@
   "parentfield": null,
   "parenttype": null,
   "workflow_action_name": "Set As Lost"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-03-01 13:23:52.609336",
+  "name": "Submit",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Submit"
  }
 ]

@@ -354,7 +354,7 @@
   "is_standard": 0,
   "message": "<h1><strong>Blanket Order Reminder</strong></h1>\n<h2><span style=\"color: rgb(102, 185, 102);\">Blanket Order Details:</span>\n</h2><table class=\"table table-bordered\"><tbody>\n<tr><td data-row=\"insert-column-right\"><strong>Blanket Order Awaiting Approval</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.name }}</strong></td>\n</tr><tr><td data-row=\"insert-row-below\"><strong>Customer Name</strong></td>\n<td data-row=\"insert-row-below\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.customer_name }}</strong></td></tr>\n<tr><td data-row=\"insert-column-right\"><strong>To Date</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ frappe.utils.formatdate(doc.get_formatted('to_date'), \"dd-mm-yyyy\") }}</strong></td>\n</tr><tr><td data-row=\"row-zajk\">\n<strong>View Document in ERPNext</strong></td><td data-row=\"row-mze0\">\n<strong style=\"color: rgb(230, 0, 0);\"><a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\" target=\"_blank\" class=\"btn btn-success\">Click to view document</a></strong></td></tr><tr><td data-row=\"row-779i\">\n<strong>Note</strong></td><td data-row=\"row-779i\">\n<strong style=\"color: rgb(255, 153, 0);\">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>",
   "method": null,
-  "modified": "2021-02-25 15:47:23.501653",
+  "modified": "2021-03-01 13:06:16.513486",
   "module": null,
   "name": "Blanket Order Awaiting Approval",
   "parent": null,
@@ -374,7 +374,7 @@
     "receiver_by_role": "MD"
    }
   ],
-  "send_system_notification": 0,
+  "send_system_notification": 1,
   "send_to_all_assignees": 0,
   "sender": null,
   "sender_email": null,
@@ -397,7 +397,7 @@
   "is_standard": 0,
   "message": "<h1><strong>Blanket Order Reminder</strong></h1>\n<h2><span style=\"color: rgb(102, 185, 102);\">Blanket Order Details:</span>\n</h2><table class=\"table table-bordered\"><tbody>\n<tr><td data-row=\"insert-column-right\"><strong>Blanket Order Rejected</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.name }}</strong></td>\n</tr><tr><td data-row=\"insert-row-below\"><strong>Customer Name</strong></td>\n<td data-row=\"insert-row-below\"><strong style=\"color: rgb(107, 36, 178);\">{{ doc.customer_name }}</strong></td></tr>\n<tr><td data-row=\"insert-column-right\"><strong>To Date</strong></td>\n<td data-row=\"insert-column-right\"><strong style=\"color: rgb(107, 36, 178);\">{{ frappe.utils.formatdate(doc.get_formatted('to_date'), \"dd-mm-yyyy\") }}</strong></td>\n</tr><tr><td data-row=\"row-zajk\">\n<strong>View Document in ERPNext</strong></td><td data-row=\"row-mze0\">\n<strong style=\"color: rgb(230, 0, 0);\"><a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\" target=\"_blank\" class=\"btn btn-success\">Click to view document</a></strong></td></tr><tr><td data-row=\"row-779i\">\n<strong>Note</strong></td><td data-row=\"row-779i\">\n<strong style=\"color: rgb(255, 153, 0);\">This is a system generated email, please don't reply to this message.</strong></td></tr></tbody></table>",
   "method": null,
-  "modified": "2021-02-25 15:49:26.119113",
+  "modified": "2021-03-01 13:06:10.965645",
   "module": null,
   "name": "Blanket Order Rejected",
   "parent": null,
@@ -417,7 +417,7 @@
     "receiver_by_role": "Production User"
    }
   ],
-  "send_system_notification": 0,
+  "send_system_notification": 1,
   "send_to_all_assignees": 0,
   "sender": null,
   "sender_email": null,

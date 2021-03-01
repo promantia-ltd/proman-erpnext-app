@@ -81,7 +81,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Employee External Work History-previous_uan_number",
                                        "Employee-accident_insurance",
                                        "Employee-mobile_number",
-                                       "Quality Inspection-heat_number"
+                                       "Quality Inspection-heat_number",
+                                       "Blanket Order-remarks"
                                        ]
                     ]
                 ]},
