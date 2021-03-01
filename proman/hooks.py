@@ -23,8 +23,6 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                     "Lead-mobile_no-reqd",
                                     "Lead-fax-reqd",
                                     "Employee-naming_series-label"
-
-
                                     ]
                  ]
              ]},
@@ -82,7 +80,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Employee-accident_insurance",
                                        "Employee-mobile_number",
                                        "Quality Inspection-heat_number",
-                                       "Blanket Order-remarks"
+                                       "Blanket Order-remarks",
+                                       "Quotation-remarks"
                                        ]
                     ]
                 ]},
@@ -101,23 +100,6 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                     ]
                 ]
              },
-            # {"dt": 'Custom DocPerm',
-            #     "filters": [
-            #         [
-            #             "role", "in", ['Sales Engineer',
-            #                            'Quality Person',
-            #                            "Accounts Manager",
-            #                            "Vendor Development",
-            #                            "Managing Director",
-            #                            "Sales Co-ordinator",
-            #                            "General",
-            #                            "HQ",
-            #                            "Production User",
-            #                            "MD"
-            #                            ]
-            #         ]
-            #     ]
-            #  },
             {"dt": "Notification",
                 "filters": [
                     "is_standard != 1"
@@ -134,11 +116,11 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
              }
             ]
 
-doc_events = {
-    "Employee": {
-        "validate": "proman.config.validations.validate_employee_posting_date"
-    }
-}
+# doc_events = {
+#     "Employee": {
+#         "validate": "proman.config.validations.validate_employee_posting_date"
+#     }
+# }
 
 # Includes in <head>
 # ------------------
