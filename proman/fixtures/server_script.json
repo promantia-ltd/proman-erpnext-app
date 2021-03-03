@@ -62,5 +62,21 @@
   "reference_doctype": "Quotation",
   "script": "if doc.workflow_state == 'Rejected':\n    if doc.remarks is not None:\n        pass\n    else:\n        frappe.throw(\"Please enter the remarks for rejection\")",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "modified": "2021-03-03 09:51:13.608042",
+  "name": "Employee Transfer",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "reference_doctype": "Employee Transfer",
+  "script": "if doc.workflow_state == 'HR Manager Rejected' or doc.workflow_state == 'MD Rejected':\n    if doc.remarks is not None:\n        pass\n    else:\n        frappe.throw(\"Please enter the remarks for rejection\")",
+  "script_type": "DocType Event"
  }
 ]
