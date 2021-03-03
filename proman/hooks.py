@@ -13,6 +13,13 @@ app_license = "MIT"
 
 
 fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script",
+            {'dt': 'DocType',
+                    "filters":[
+                        [
+                            "name", "in", ["Academic Details Items"]
+                        ]
+                    ]
+            },
             {"dt": "Property Setter",
              "filters": [
                  [

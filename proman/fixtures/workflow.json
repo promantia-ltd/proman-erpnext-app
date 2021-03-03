@@ -389,7 +389,7 @@
   "doctype": "Workflow",
   "document_type": "Employee Transfer",
   "is_active": 1,
-  "modified": "2021-03-03 09:37:34.090599",
+  "modified": "2021-03-03 18:37:20.657836",
   "name": "Employee Transfer",
   "override_status": 0,
   "parent": "Employee Transfer",
