@@ -89,7 +89,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Quality Inspection-heat_number",
                                        "Blanket Order-remarks",
                                        "Quotation-remarks",
-                                       "Employee Transfer-remarks"
+                                       "Employee Transfer-remarks",
+                                       "Purchase Receipt-supplier_invoice_number"
                                        ]
                     ]
                 ]},

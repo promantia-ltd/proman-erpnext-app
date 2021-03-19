@@ -592,5 +592,144 @@
   ],
   "workflow_name": "Employee Transfer",
   "workflow_state_field": "workflow_state"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Sales Order",
+  "is_active": 1,
+  "modified": "2021-03-18 18:39:41.204466",
+  "name": "Sales Order Flow",
+  "override_status": 0,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "send_email_alert": 0,
+  "states": [
+   {
+    "allow_edit": "Sales User",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Sales Order Flow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Draft",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Sales User",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Sales Order Flow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Awaiting AM Approval",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Accounts Manager",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Sales Order Flow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "AM Approved",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Accounts Manager",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Sales Order Flow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "AM Rejected",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Accounts Manager",
+    "doc_status": "2",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Sales Order Flow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Cancelled",
+    "update_field": null,
+    "update_value": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Send For Approval",
+    "allow_self_approval": 1,
+    "allowed": "Sales User",
+    "condition": null,
+    "next_state": "Awaiting AM Approval",
+    "parent": "Sales Order Flow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Draft"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "Accounts Manager",
+    "condition": null,
+    "next_state": "AM Approved",
+    "parent": "Sales Order Flow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Awaiting AM Approval"
+   },
+   {
+    "action": "Reject",
+    "allow_self_approval": 1,
+    "allowed": "Accounts Manager",
+    "condition": null,
+    "next_state": "AM Rejected",
+    "parent": "Sales Order Flow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Awaiting AM Approval"
+   },
+   {
+    "action": "Send For Approval",
+    "allow_self_approval": 1,
+    "allowed": "Sales User",
+    "condition": null,
+    "next_state": "Awaiting AM Approval",
+    "parent": "Sales Order Flow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "AM Rejected"
+   },
+   {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Accounts Manager",
+    "condition": null,
+    "next_state": "Cancelled",
+    "parent": "Sales Order Flow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "AM Approved"
+   }
+  ],
+  "workflow_name": "Sales Order Flow",
+  "workflow_state_field": "workflow_state"
  }
 ]

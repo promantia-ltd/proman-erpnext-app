@@ -746,5 +746,48 @@
   "slack_webhook_url": null,
   "subject": null,
   "value_changed": null
+ },
+ {
+  "attach_print": 0,
+  "channel": "Email",
+  "condition": "doc.workflow_state==\"Awaiting AM Approval\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Sales Order",
+  "enabled": 1,
+  "event": "Save",
+  "is_standard": 0,
+  "message": "<h3>Hi,</h3>\n<p>The Sales Order <a href=\"{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}\">{{doc.name}}</a> has been created and awaiting for approval, please approve the Order</p>\n<h3> Thank You</h3>",
+  "method": null,
+  "modified": "2021-03-18 18:49:22.747562",
+  "module": null,
+  "name": "Sales Order Awaiting AM Approval",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Sales Order Awaiting AM Approval",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Accounts Manager"
+   }
+  ],
+  "send_system_notification": 1,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Awaiting Approval for Sales Order {{doc.name}}",
+  "value_changed": null
  }
 ]

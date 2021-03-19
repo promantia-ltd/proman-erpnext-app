@@ -166,5 +166,41 @@
   "parenttype": null,
   "style": "",
   "workflow_state_name": "Lost"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2021-03-18 18:30:59.533340",
+  "name": "Awaiting AM Approval",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "",
+  "workflow_state_name": "Awaiting AM Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2021-03-19 11:43:30.342606",
+  "name": "AM Approved",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "AM Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2021-03-19 11:44:03.380078",
+  "name": "AM Rejected",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Warning",
+  "workflow_state_name": "AM Rejected"
  }
 ]
