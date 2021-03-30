@@ -119,12 +119,21 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                 "filters": [
                     [
                         "name", "in", ["Quotation-Client",
-                                        "Employee-Client"
+                                        "Employee-Client",
+					"Work Order-Client"
                                        ]
                     ]
                 ]
              }
             ]
+doctype_js = {
+	"Production Plan" : "proman/doctype/production_plan/production_plan.js"
+}
+
+override_doctype_dashboards = {
+	"Production Plan": ["proman.proman.doctype.production_plan.production_plan_dashboard.get_dashboard_data"],
+	"Service Request": ["proman.proman.doctype.service_request.service_request_dashboard.get_dashboard_data"]
+}
 
 # doc_events = {
 #     "Employee": {
