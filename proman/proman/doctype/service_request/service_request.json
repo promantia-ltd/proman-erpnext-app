@@ -59,7 +59,7 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "{material_request_type}",
+   "default": "Service Request",
    "fieldname": "title",
    "fieldtype": "Data",
    "hidden": 1,
@@ -305,7 +305,7 @@
  "icon": "fa fa-ticket",
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-26 16:09:22.613906",
+ "modified": "2021-03-31 10:56:29.420151",
  "modified_by": "Administrator",
  "module": "Proman",
  "name": "Service Request",

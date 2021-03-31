@@ -90,7 +90,10 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Blanket Order-remarks",
                                        "Quotation-remarks",
                                        "Employee Transfer-remarks",
-                                       "Purchase Receipt-supplier_invoice_number"
+                                       "Purchase Receipt-supplier_invoice_number",
+                                       "Purchase Order Item-service_request",
+                                       "Purchase Order Item-service_request_item",
+                                       "Production Plan Item-make_service_request_for_subcontracted_items"
                                        ]
                     ]
                 ]},
