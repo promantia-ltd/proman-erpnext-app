@@ -22,5 +22,17 @@
   "parentfield": null,
   "parenttype": null,
   "script": "frappe.ui.form.on('Employee', {\n\tbefore_save: function(frm){\n\t    var todays_date = new Date()\n\t    if(frm.doc.posting_date < get_today()){\n\t        frappe.throw(\"Cannot select past date.\")\n\t    }\n\t}\n})"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Work Order",
+  "enabled": 1,
+  "modified": "2021-03-30 17:56:55.168045",
+  "name": "Work Order-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Work Order', {\n\tonload(frm) {\n\t\tif(frm.doc.status==\"Stopped\"){\n\t\tfrm.disable_save()\n\t\t}\n\t}\n})"
  }
 ]
