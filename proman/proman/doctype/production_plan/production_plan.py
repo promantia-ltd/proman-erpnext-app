@@ -36,7 +36,7 @@ def auto_create_service_request(doc):
 	for subitem in frappe.db.get_list("Item",filters={"item_code":['in',itemcodes],"is_sub_contracted_item":1},fields={"item_code"}):
 		subcontracteditem.append(subitem.item_code)
 
-	for loop_items in items:
+	for loop_items in range(len(items)):
 		for sr_items in items:
 			if sr_items['item_code'] not in subcontracteditem:
 				items.pop(items.index(sr_items))
@@ -68,7 +68,7 @@ def auto_create_service_request(doc):
 		sr_doc.save()
 
 	for workorders in frappe.db.get_list("Work Order", filters={"production_item":["in",subcontracteditem],"production_plan":result['name']},fields={'name'}):
-		frappe.db.set_value('Work Order', workorders.name,{ 'status': 'Stopped'})
+		frappe.db.set_value('Work Order', workorders.name,{ 'status': 'Stopped','docstatus': 1})
 
 	lists = frappe.db.get_list("Production Plan Item", filters={"parent":result['name'],"make_service_request_for_subcontracted_items":1,"warehouse":""},fields={'*'})
 	no_warehouse_items = []
@@ -76,6 +76,10 @@ def auto_create_service_request(doc):
 		no_warehouse_items.append(ele['item_code'])
 	if lists:
 		msgprint(_("Default Warehouse is unavailable for the Item: {0}. To proceed update the default warehouse for the item.").format(comma_and(no_warehouse_items)))
+
+	service_request_list=frappe.db.get_list("Service Request", filters={"production_plan":result['name']},fields={'name'})
+	return service_request_list
+
 
 def get_items(bom):
 	item_list=[]
