@@ -103,23 +103,6 @@
  },
  {
   "default_value": null,
-  "doc_type": "Lead",
-  "docstatus": 0,
-  "doctype": "Property Setter",
-  "doctype_or_field": "DocField",
-  "field_name": "fax",
-  "modified": "2021-02-16 16:45:37.838183",
-  "name": "Lead-fax-reqd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "property": "reqd",
-  "property_type": "Check",
-  "row_name": null,
-  "value": "1"
- },
- {
-  "default_value": null,
   "doc_type": "Employee",
   "docstatus": 0,
   "doctype": "Property Setter",
