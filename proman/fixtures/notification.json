@@ -718,7 +718,7 @@
   "is_standard": 0,
   "message": "Dear {{ doc.sales_engineer_name }},\nThe {{ doc.lead_name }} Lead is assigned to you for communication and followup. Please do the needful.\nRegards,\nCRM Team",
   "method": null,
-  "modified": "2021-02-26 16:50:36.247098",
+  "modified": "2021-05-21 12:23:30.433354",
   "module": null,
   "name": "Sales Engineer sms on lead creation",
   "parent": null,
@@ -734,7 +734,7 @@
     "parent": "Sales Engineer sms on lead creation",
     "parentfield": "recipients",
     "parenttype": "Notification",
-    "receiver_by_document_field": "mobile_no",
+    "receiver_by_document_field": "sales_engineer_mobile_no",
     "receiver_by_role": null
    }
   ],
