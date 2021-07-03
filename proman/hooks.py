@@ -120,7 +120,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                 ]
              },
 
-            {'dt': "Custom Script",
+            {'dt': "Client Script",
                 "filters": [
                     [
                         "name", "in", ["Quotation-Client",
