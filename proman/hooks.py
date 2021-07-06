@@ -16,7 +16,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
             {'dt': 'DocType',
                     "filters":[
                         [
-                            "name", "in", ["Academic Details Items"]
+                            "name", "in", ["Academic Details Items","Service Request","Service Request Item"]
                         ]
                     ]
             },
@@ -120,7 +120,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                 ]
              },
 
-            {'dt': "Custom Script",
+            {'dt': "Client Script",
                 "filters": [
                     [
                         "name", "in", ["Quotation-Client",
