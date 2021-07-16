@@ -16,7 +16,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
             {'dt': 'DocType',
                     "filters":[
                         [
-                            "name", "in", ["Academic Details Items"]
+                            "name", "in", ["Academic Details Items","Service Request","Service Request Item"]
                         ]
                     ]
             },
@@ -95,7 +95,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Purchase Order Item-service_request_item",
                                        "Production Plan Item-make_service_request_for_subcontracted_items",
                                        "Material Request-project",
-                                       "Lead-sales_engineer_mobile_no"
+                                       "Lead-sales_engineer_mobile_no",
+                                       "Purchase Order-service_request"
                                        ]
                     ]
                 ]},
@@ -120,13 +121,14 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                 ]
              },
 
-            {'dt': "Custom Script",
+            {'dt': "Client Script",
                 "filters": [
                     [
                         "name", "in", ["Quotation-Client",
                                         "Employee-Client",
 					"Work Order-Client",
 					"Delivery Note-Client",
+					"Service Request-Form"
                                        ]
                     ]
                 ]
