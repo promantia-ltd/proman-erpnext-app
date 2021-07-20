@@ -13,13 +13,6 @@ app_license = "MIT"
 
 
 fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script",
-            {'dt': 'DocType',
-                    "filters":[
-                        [
-                            "name", "in", ["Academic Details Items","Service Request","Service Request Item"]
-                        ]
-                    ]
-            },
             {"dt": "Property Setter",
              "filters": [
                  [
@@ -139,8 +132,8 @@ doctype_js = {
 }
 
 override_doctype_dashboards = {
-	"Production Plan": ["proman.proman.doctype.production_plan.production_plan_dashboard.get_dashboard_data"],
-	"Service Request": ["proman.proman.doctype.service_request.service_request_dashboard.get_dashboard_data"]
+	"Production Plan": ["proman.proman.doctype.production_plan.production_plan_dashboard.get_dashboard_data"]
+	#"Service Request": ["proman.proman.doctype.service_request.service_request_dashboard.get_dashboard_data"]
 }
 
 # doc_events = {
