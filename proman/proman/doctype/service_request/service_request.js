@@ -1,7 +1,7 @@
 // Copyright (c) 2021, proman_app and contributors
 // For license information, please see license.txt
 frappe.provide("erpnext.accounts.dimensions");
-{% include 'erpnext/public/js/controllers/buying.js' %};
+//{% include 'erpnext/public/js/controllers/buying.js' %};
 
 frappe.ui.form.on('Service Request', {
 	setup: function(frm) {
@@ -56,6 +56,7 @@ frappe.ui.form.on('Service Request', {
 		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 	 refresh: function(frm) {
+		 console.log('refresh')
 		frm.events.make_custom_buttons(frm);
 	 },
 	make_custom_buttons: function(frm) {
