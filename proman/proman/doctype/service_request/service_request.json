@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "autoname": "naming_series:",
- "creation": "2021-03-23 16:16:20.118881",
+ "creation": "2021-07-19 20:56:31.678514",
  "doctype": "DocType",
  "document_type": "Document",
  "engine": "InnoDB",
@@ -88,6 +88,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
@@ -304,8 +305,13 @@
  ],
  "icon": "fa fa-ticket",
  "is_submittable": 1,
- "links": [],
- "modified": "2021-03-31 10:56:29.420151",
+ "links": [
+  {
+   "link_doctype": "Purchase Order",
+   "link_fieldname": "service_request"
+  }
+ ],
+ "modified": "2021-07-20 15:30:38.083275",
  "modified_by": "Administrator",
  "module": "Proman",
  "name": "Service Request",
