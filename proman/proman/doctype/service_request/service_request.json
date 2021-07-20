@@ -88,6 +88,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
@@ -304,8 +305,13 @@
  ],
  "icon": "fa fa-ticket",
  "is_submittable": 1,
- "links": [],
- "modified": "2021-07-20 12:32:54.080169",
+ "links": [
+  {
+   "link_doctype": "Purchase Order",
+   "link_fieldname": "service_request"
+  }
+ ],
+ "modified": "2021-07-20 15:30:38.083275",
  "modified_by": "Administrator",
  "module": "Proman",
  "name": "Service Request",
