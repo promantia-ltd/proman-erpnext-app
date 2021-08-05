@@ -87,7 +87,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Purchase Order Item-service_request",
                                        "Purchase Order Item-service_request_item",
                                        "Production Plan Item-make_service_request_for_subcontracted_items",
-                                       "Material Request-project",
+                                       "Material Request-project_name",
                                        "Lead-sales_engineer_mobile_no",
                                        "Purchase Order-service_request"
                                        ]
