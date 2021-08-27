@@ -22,7 +22,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                     "Lead-notes-reqd", "Lead-phone-reqd",
                                     "Lead-mobile_no-reqd",
                                     "Lead-fax-reqd",
-                                    "Employee-naming_series-label"
+                                    "Employee-naming_series-label",
+                                    "Production Plan-project-mandatory_depends_on"
                                     ]
                  ]
              ]},
@@ -89,7 +90,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Production Plan Item-make_service_request_for_subcontracted_items",
                                        "Material Request-project_name",
                                        "Lead-sales_engineer_mobile_no",
-                                       "Purchase Order-service_request"
+                                       "Purchase Order-service_request",
+                                       "Purchase Order-project",
+                                       "Material Request-project"
                                        ]
                     ]
                 ]},
