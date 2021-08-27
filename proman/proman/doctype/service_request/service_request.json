@@ -23,6 +23,7 @@
   "scan_barcode",
   "items",
   "more_info",
+  "project",
   "per_ordered",
   "column_break2",
   "per_received",
@@ -179,7 +180,6 @@
    "collapsible": 1,
    "fieldname": "more_info",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "More Information",
    "oldfieldtype": "Section Break",
    "options": "fa fa-file-text"
@@ -301,6 +301,12 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Set Status"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
   }
  ],
  "icon": "fa fa-ticket",
@@ -311,7 +317,7 @@
    "link_fieldname": "service_request"
   }
  ],
- "modified": "2021-07-20 15:30:38.083275",
+ "modified": "2021-08-27 12:26:33.533741",
  "modified_by": "Administrator",
  "module": "Proman",
  "name": "Service Request",
