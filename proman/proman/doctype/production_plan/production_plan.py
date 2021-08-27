@@ -50,7 +50,8 @@ def auto_create_service_request(doc):
 			material_request_type="Purchase",
 			transaction_date=nowdate(),
 			schedule_date=nowdate(),
-			production_plan=result['name']
+			production_plan=result['name'],
+			project=result['project']
 		))#.insert(ignore_mandatory=True)
 		for val in data:
 			sr_doc.append('items', {
