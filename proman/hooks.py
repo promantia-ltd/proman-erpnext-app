@@ -106,7 +106,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "General",
                                        "HQ",
                                        "Production User",
-                                       "MD"
+                                       "MD",
+                                       "ERP User"
                                        ]
                     ]
                 ]
