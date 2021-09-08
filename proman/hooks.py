@@ -140,6 +140,13 @@ override_doctype_dashboards = {
 	#"Service Request": ["proman.proman.doctype.service_request.service_request_dashboard.get_dashboard_data"]
 }
 
+
+doc_events = {
+	"Item Stock Update": {
+		"before_save": "proman.proman.doctype.item_stock_update.item_stock_update.get_warehouses",
+		"on_submit": "proman.proman.doctype.item_stock_update.item_stock_update.update_stock_difference"
+	}
+}
 # doc_events = {
 #     "Employee": {
 #         "validate": "proman.config.validations.validate_employee_posting_date"
