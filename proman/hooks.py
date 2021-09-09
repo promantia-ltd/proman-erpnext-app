@@ -147,11 +147,6 @@ doc_events = {
 		"on_submit": "proman.proman.doctype.item_stock_update.item_stock_update.update_stock_difference"
 	}
 }
-# doc_events = {
-#     "Employee": {
-#         "validate": "proman.config.validations.validate_employee_posting_date"
-#     }
-# }
 
 # Includes in <head>
 # ------------------

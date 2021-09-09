@@ -9,6 +9,7 @@ from frappe.model.document import Document
 class ItemStockUpdate(Document):
 	pass
 
+
 @frappe.whitelist()
 def get_warehouses(doc,method):
 	warehouses=frappe.db.sql("""SELECT item_code,sum(stock_value_difference) as stock_value ,warehouse 
@@ -20,6 +21,7 @@ def get_warehouses(doc,method):
 			'stock_value_difference':warehouse.stock_value
 		})
 
+
 @frappe.whitelist()
 def update_stock_difference(doc,method):
 	warehouses=frappe.db.sql("""SELECT item_code,sum(stock_value_difference) as stock_value ,warehouse 
@@ -27,7 +29,6 @@ def update_stock_difference(doc,method):
 		and item_code=%s""",doc.item_code,as_dict=True)
 	if warehouses:
 		for warehouse in warehouses:
-			print(warehouse.warehouse)
 			warehouses=frappe.db.sql("""UPDATE `tabStock Ledger Entry` SET stock_value_difference=0
 			where item_code=%s and warehouse = %s
 			""",(doc.item_code,warehouse.warehouse))
