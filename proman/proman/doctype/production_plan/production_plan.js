@@ -1,7 +1,7 @@
 frappe.ui.form.on('Production Plan', {
 	setup: function(frm) {
 		frm.custom_make_buttons = {
-			'Work Order': 'Work Order',
+			'Work Order': 'Work Order / Subcontract PO',
 			'Material Request': 'Material Request',
 			'Service Request': 'Service Request'
 		};
