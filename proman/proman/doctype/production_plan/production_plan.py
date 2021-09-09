@@ -64,7 +64,8 @@ def auto_create_service_request(doc):
 				'stock_uom':val['stock_uom'],
 				'uom':val['stock_uom'],
 				'conversion_factor':1,
-				'warehouse':val['warehouse']
+				'warehouse':val['warehouse'],
+				'production_plan':result['name']
 			})
 		sr_doc.save()
 

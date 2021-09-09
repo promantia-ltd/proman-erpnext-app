@@ -9,5 +9,9 @@ def get_dashboard_data(data):
 				'label': _('Transactions'),
 				'items': ['Work Order', 'Material Request', 'Service Request']
 			},
+			{
+				'label': _('Subcontract'),
+				'items': ['Purchase Order']
+			},
 		]
 	}
