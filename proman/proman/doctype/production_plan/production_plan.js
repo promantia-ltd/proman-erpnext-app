@@ -28,5 +28,8 @@ frappe.ui.form.on('Production Plan', {
 		}
 		})
 		frm.reload_doc();
+	},
+	after_submit: function(frm){
+	frm.refresh();
 	}
 });
