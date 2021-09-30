@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "autoname": ".item_code.-.####",
+ "creation": "2021-09-08 12:22:26.297371",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "amended_from",
+  "stock_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Item Stock Update",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_warehouse",
+   "fieldtype": "Table",
+   "label": "Stock Warehouse",
+   "options": "Stock Warehouse",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-09-08 19:06:21.901716",
+ "modified_by": "Administrator",
+ "module": "Proman",
+ "name": "Item Stock Update",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
