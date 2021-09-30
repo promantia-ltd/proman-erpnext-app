@@ -41,6 +41,11 @@ def auto_create_service_request(doc):
 			if sr_items['item_code'] not in subcontracteditem:
 				items.pop(items.index(sr_items))
 
+	if "project" in result:
+		assign_project=result['project']
+	else:
+		assign_project=""
+
 	sorted_users = sorted(items, key=lambda x: (x['warehouse']))
 	grouped_by_supplier = {}
 	for key, group in groupby(sorted_users, key=lambda x: (x['warehouse'])):
@@ -51,7 +56,7 @@ def auto_create_service_request(doc):
 			transaction_date=nowdate(),
 			schedule_date=nowdate(),
 			production_plan=result['name'],
-			project=result['project']
+			project=assign_project
 		))#.insert(ignore_mandatory=True)
 		for val in data:
 			sr_doc.append('items', {
@@ -64,7 +69,8 @@ def auto_create_service_request(doc):
 				'stock_uom':val['stock_uom'],
 				'uom':val['stock_uom'],
 				'conversion_factor':1,
-				'warehouse':val['warehouse']
+				'warehouse':val['warehouse'],
+				'production_plan':result['name']
 			})
 		sr_doc.save()
 
