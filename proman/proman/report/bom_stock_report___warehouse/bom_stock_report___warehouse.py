@@ -49,7 +49,7 @@ def get_bom_stock(filters):
 				t.stock_uom as bom_uom,
 				t.{qty_field} * {qty_to_produce}/ {qty} as required_qty,
 				ledger.actual_qty as in_stock_qty,
-				ledger.actual_qty / (t.{qty_field} * {qty_to_produce}/ {qty}) as enough_parts_to_build,
+				(FLOOR(ledger.actual_qty / (t.{qty_field} * {qty_to_produce}/ {qty}))) as enough_parts_to_build,
 				ledger.warehouse,
 				t.bom_no
 			FROM
@@ -96,7 +96,7 @@ def get_bom_stock(filters):
 					explod_item.stock_uom  as bom_uom,
 					explod_item.stock_qty * {qty_to_produce}/ {qty} as required_qty,
 					ledger.actual_qty as in_stock_qty,
-					ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})  as enough_parts_to_build,
+					(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
 					ledger.warehouse
 				FROM
 					`tabBOM Explosion Item` AS explod_item 
