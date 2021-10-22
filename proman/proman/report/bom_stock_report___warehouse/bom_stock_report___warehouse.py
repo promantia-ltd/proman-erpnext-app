@@ -30,7 +30,7 @@ def get_columns():
 
 def get_bom_stock(filters):
 	records=[]
-	data=[]
+	bom_list=[]
 	conditions = ""
 	bom = filters.get("bom")
 	qty=frappe.db.get_value('BOM',{'name':bom},'quantity')
@@ -41,42 +41,50 @@ def get_bom_stock(filters):
 		frappe.throw(_("Quantity to Produce can not be less than Zero"))
 
 	query="""
-			(select * from (WITH RECURSIVE item_hierarchy AS (
-  			SELECT    
-				t.item_code as item,
-				t.description ,
-				t.stock_qty as bom_qty,
-				t.stock_uom as bom_uom,
-				t.{qty_field} * {qty_to_produce}/ {qty} as required_qty,
-				ledger.actual_qty as in_stock_qty,
-				(FLOOR(ledger.actual_qty / (t.{qty_field} * {qty_to_produce}/ {qty}))) as enough_parts_to_build,
-				ledger.warehouse,
-				t.bom_no
+			select bom.item,
+			bom.description ,
+			bom.bom_qty ,
+			bom.bom_uom,
+			bom.required_qty,
+			ledger.actual_qty as in_stock_qty,
+			(FLOOR(ledger.actual_qty / (bom.bom_qty * {qty_to_produce}/ {qty}))) as enough_parts_to_build,
+			ledger.warehouse
+			from `tabBin` AS ledger 
+			INNER JOIN (SELECT 
+			item,
+			description,
+			bom_qty,
+			bom_uom,
+			required_qty
+
+			from (WITH RECURSIVE item_hierarchy AS (
+			SELECT    
+			t.item_code as item,
+			t.bom_no,
+			t.description ,
+			t.stock_qty as bom_qty,
+			t.stock_uom as bom_uom,
+			t.{qty_field} * {qty_to_produce}/ {qty} as required_qty
 			FROM
-				`tabBOM Item` t LEFT JOIN `tabBin` AS ledger
-					ON t.item_code = ledger.item_code
-		where t.parent={bom} 
-		
-		UNION ALL
-		
-		SELECT
+			`tabBOM Item` t
+			where t.parent={bom}
+
+			UNION ALL
+
+			SELECT
 			e.item_code as item,
+			e.bom_no,
 			e.description ,
 			e.stock_qty as bom_qty,
-			e.stock_uom  as bom_uom,
-			e.{qty_field} * {qty_to_produce} / {qty} as required_qty,
-			ledger.actual_qty as in_stock_qty,
-			ledger.actual_qty / (e.{qty_field} * {qty_to_produce}/ {qty})  as enough_parts_to_build,
-			ledger.warehouse,
-			e.bom_no
-
-		FROM  item_hierarchy,`tabBOM Item` e  LEFT JOIN `tabBin` AS ledger
-							ON e.item_code = ledger.item_code
-		WHERE e.parent = item_hierarchy.bom_no 
-		)
+			e.stock_uom as bom_uom,
+			e.{qty_field} * {qty_to_produce}/ {qty} as required_qty
+			FROM  item_hierarchy,`tabBOM Item` e
+			WHERE e.parent = item_hierarchy.bom_no
+			)
 			SELECT *
-			FROM item_hierarchy)as t1)
-					""".format(
+			FROM item_hierarchy group by item) as t1)as bom
+			ON bom.item = ledger.item_code where ledger.actual_qty>0
+		 """.format(
 				qty_field=qty_field,
 				conditions=conditions,
 				bom=frappe.db.escape(bom),
@@ -86,39 +94,45 @@ def get_bom_stock(filters):
 	bom_item_list= frappe.db.sql(query, as_dict=True)
 	for item in bom_item_list:
 		records.append(item)
+		if item.bom_no:
+			bom_list.append(item.bom_no)
 	
-	for record in records:
-		if record.bom_no:
-			query="""SELECT
-					explod_item.item_code as item,
-					explod_item.description,
-					explod_item.stock_qty as bom_qty,
-					explod_item.stock_uom  as bom_uom,
-					explod_item.stock_qty * {qty_to_produce}/ {qty} as required_qty,
-					ledger.actual_qty as in_stock_qty,
-					(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
-					ledger.warehouse
-				FROM
-					`tabBOM Explosion Item` AS explod_item 
-				LEFT JOIN `tabBin` AS ledger
-						ON explod_item.item_code = ledger.item_code
-				WHERE
-				explod_item.parent={bom} or explod_item.parent={parent}
-				and ledger.actual_qty > 0""".format(
-					qty_field=qty_field,
-					conditions=conditions,
-					bom=frappe.db.escape(record.bom_no),
-					parent=frappe.db.escape(bom),
-					qty=qty,
-					qty_to_produce=qty_to_produce or 1)
+	if len(bom_list)>1:
+		condition=f"""SELECT
+			explod_item.item_code as item,
+			explod_item.description,
+			explod_item.stock_qty as bom_qty,
+			explod_item.stock_uom  as bom_uom,
+			explod_item.stock_qty * {qty_to_produce or 1}/ {qty} as required_qty,
+			ledger.actual_qty as in_stock_qty,
+			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
+			ledger.warehouse
+		FROM
+			`tabBOM Explosion Item` AS explod_item 
+		LEFT JOIN `tabBin` AS ledger
+				ON explod_item.item_code = ledger.item_code WHERE
+			explod_item.parent in {frappe.db.escape(tuple(bom_list))} or explod_item.parent={filters.get("bom")}
+			and ledger.actual_qty > 0 """
+	else:
+		condition=f"""SELECT
+			explod_item.item_code as item,
+			explod_item.description,
+			explod_item.stock_qty as bom_qty,
+			explod_item.stock_uom  as bom_uom,
+			explod_item.stock_qty * {qty_to_produce or 1}/ {qty} as required_qty,
+			ledger.actual_qty as in_stock_qty,
+			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
+			ledger.warehouse
+		FROM
+			`tabBOM Explosion Item` AS explod_item 
+		LEFT JOIN `tabBin` AS ledger
+				ON explod_item.item_code = ledger.item_code WHERE
+			explod_item.parent = {frappe.db.escape(tuple(bom_list))} or explod_item.parent={filters.get("bom")}
+			and ledger.actual_qty > 0"""
+	
+	exploded_item_list= frappe.db.sql(query, as_dict=True)
+	for item in exploded_item_list:
+		if item not in records and item.in_stock_qty>0 :
+			records.append(item)
 
-			exploded_item_list= frappe.db.sql(query, as_dict=True)
-			for item in exploded_item_list:
-				if item not in records:
-					records.append(item)
-		
-	for val in records:
-		if val.in_stock_qty>0 and val not in data:
-			data.append(val)
-
-	return data
+	return records
