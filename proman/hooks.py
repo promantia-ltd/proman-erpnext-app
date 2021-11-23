@@ -92,7 +92,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Lead-sales_engineer_mobile_no",
                                        "Purchase Order-service_request",
                                        "Purchase Order-project",
-                                       "Material Request-project"
+                                       "Material Request-project",
+                                       "Project-gross_margin_amount"
                                        ]
                     ]
                 ]},
@@ -132,12 +133,12 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
              }
             ]
 doctype_js = {
-	"Production Plan" : "proman/doctype/production_plan/production_plan.js"
+	"Production Plan" : "proman/doctype/production_plan/production_plan.js",
+    "Project" : "proman/doctype/project/project.js"
 }
 
 override_doctype_dashboards = {
 	"Production Plan": ["proman.proman.doctype.production_plan.production_plan_dashboard.get_dashboard_data"]
-	#"Service Request": ["proman.proman.doctype.service_request.service_request_dashboard.get_dashboard_data"]
 }
 
 
@@ -145,7 +146,19 @@ doc_events = {
 	"Item Stock Update": {
 		"before_save": "proman.proman.doctype.item_stock_update.item_stock_update.get_warehouses",
 		"on_submit": "proman.proman.doctype.item_stock_update.item_stock_update.update_stock_difference"
-	}
+	},
+    "Sales Invoice":{
+        "on_submit":"proman.proman.doctype.project.project.update_gross_margin",
+        "on_cancel":"proman.proman.doctype.project.project.update_gross_margin"
+    },
+    "Timesheet":{
+        "on_submit":"proman.proman.doctype.project.project.update_gross_margin",
+        "on_cancel":"proman.proman.doctype.project.project.update_gross_margin"
+    },
+    "Expense Claim":{
+        "on_submit":"proman.proman.doctype.project.project.update_gross_margin",
+        "on_cancel":"proman.proman.doctype.project.project.update_gross_margin"
+    }
 }
 
 # Includes in <head>
