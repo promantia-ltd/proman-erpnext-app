@@ -22,7 +22,8 @@ def get_columns():
 		_("BOM UoM") + "::160",
 		_("Required Qty") + ":Float:120",
 		_("In Stock Qty") + ":Float:120",
-		_("Enough Parts to Build") + ":Float:200",
+		_("Enough Parts to Build") + ":Int:200",
+		_("Shortage") + ":Int:200",
 		_("Warehouse")+":Link/Warehouse:150",
 	]
 
@@ -47,7 +48,9 @@ def get_bom_stock(filters):
 			bom.bom_uom,
 			bom.required_qty,
 			ledger.actual_qty as in_stock_qty,
-			(FLOOR(ledger.actual_qty / (bom.bom_qty * {qty_to_produce}/ {qty}))) as enough_parts_to_build,
+			(FLOOR(CASE WHEN bom.required_qty > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/bom.bom_qty) END)) as enough_parts_to_build,
+			(FLOOR(CASE WHEN (CASE WHEN bom.required_qty > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/bom.bom_qty) END) < {qty_to_produce} THEN (bom.required_qty - (CASE WHEN bom.required_qty > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/bom.bom_qty) END) - ledger.actual_qty) ELSE 0 END)) as shortage,
+			(FLOOR(ledger.actual_qty / (bom.bom_qty * {qty_to_produce}/ {qty}))) as enough_parts_to_builds,
 			ledger.warehouse
 			from `tabBin` AS ledger 
 			INNER JOIN (SELECT 
@@ -105,7 +108,9 @@ def get_bom_stock(filters):
 			explod_item.stock_uom  as bom_uom,
 			explod_item.stock_qty * {qty_to_produce or 1}/ {qty} as required_qty,
 			ledger.actual_qty as in_stock_qty,
-			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
+			(FLOOR( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END)) as enough_parts_to_build,
+			(FLOOR (CASE WHEN ( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END) < {qty_to_produce} THEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) - ( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END) - ledger.actual_qty ELSE 0 END))as shortage,
+			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_builds,
 			ledger.warehouse
 		FROM
 			`tabBOM Explosion Item` AS explod_item 
@@ -121,7 +126,9 @@ def get_bom_stock(filters):
 			explod_item.stock_uom  as bom_uom,
 			explod_item.stock_qty * {qty_to_produce or 1}/ {qty} as required_qty,
 			ledger.actual_qty as in_stock_qty,
-			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_build,
+			(FLOOR( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END)) as enough_parts_to_build,
+			(FLOOR (CASE WHEN ( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END) < {qty_to_produce} THEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) - ( CASE WHEN (explod_item.stock_qty * {qty_to_produce or 1}/ {qty}) > ledger.actual_qty THEN 0 ELSE (ledger.actual_qty/explod_item.stock_qty) END) - ledger.actual_qty ELSE 0 END))as shortage,
+			(FLOOR(ledger.actual_qty / (explod_item.stock_qty * {qty_to_produce}/ {qty})))  as enough_parts_to_builds,
 			ledger.warehouse
 		FROM
 			`tabBOM Explosion Item` AS explod_item 
