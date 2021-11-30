@@ -23,7 +23,7 @@ def auto_create_service_request(doc):
 	for dicts in frappe.db.get_list("Production Plan Item", filters={"parent":result['name'],"make_service_request_for_subcontracted_items":1,"warehouse":["!=",""]},fields={'*'}):
 		items.append(dicts)
 		if dicts.bom_no:
-			for  item_data in get_items(dicts.bom_no):
+			for  item_data in get_items(dicts.bom_no,dicts.planned_qty):
 				warehouse={"warehouse":dicts.warehouse}
 				quantity={"planned_qty":item_data.qty}
 				item_data.update(warehouse)
@@ -88,11 +88,17 @@ def auto_create_service_request(doc):
 	return service_request_list
 
 
-def get_items(bom):
+def get_items(bom,qty):
+	bom_qty = 1
 	item_list=[]
 	for bom in frappe.db.get_list("BOM Item", filters={"parent":bom}, fields={'*'}):
+		added_qty = bom.stock_qty * qty
+		bom1 = {"qty":added_qty}
+		bom.update(bom1)
 		item_list.append(bom)
 		if bom.bom_no:
-			for child_item_list in get_items(bom.bom_no):
+			for child_item_list in get_items(bom.bom_no, bom.qty):
+				bom_qty = bom.qty
+				child_item_list.qty = child_item_list.stock_qty * bom_qty
 				item_list.append(child_item_list)
 	return item_list
