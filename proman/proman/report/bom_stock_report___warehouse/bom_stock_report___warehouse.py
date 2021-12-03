@@ -85,7 +85,7 @@ def get_bom_stock(filters):
 			WHERE e.parent = item_hierarchy.bom_no
 			)
 			SELECT *
-			FROM item_hierarchy group by item) as t1)as bom
+			FROM item_hierarchy ) as t1)as bom
 			ON bom.item = ledger.item_code where ledger.actual_qty>0 or ledger.warehouse='Bidadi Stores - PISPL'
 		 """.format(
 				qty_field=qty_field,
@@ -135,7 +135,7 @@ def get_bom_stock(filters):
 		LEFT JOIN `tabBin` AS ledger
 				ON explod_item.item_code = ledger.item_code WHERE
 			explod_item.parent = {frappe.db.escape(tuple(bom_list))} or explod_item.parent={filters.get("bom")}
-			and ledger.actual_qty > 0"""
+			and ledger.actual_qty > 0 or ledger.warehouse='Bidadi Stores - PISPL'"""
 	
 	exploded_item_list= frappe.db.sql(query, as_dict=True)
 	for item in exploded_item_list:
