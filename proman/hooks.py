@@ -23,7 +23,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                     "Lead-mobile_no-reqd",
                                     "Lead-fax-reqd",
                                     "Employee-naming_series-label",
-                                    "Production Plan-project-mandatory_depends_on"
+                                    "Production Plan-project-mandatory_depends_on",
+                                    "Project-gross_margin-hidden",
+                                    "Project-per_gross_margin-hidden"
                                     ]
                  ]
              ]},
@@ -122,10 +124,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
             {'dt': "Client Script",
                 "filters": [
                     [
-                        "name", "in", ["Quotation-Client",
-                                        "Employee-Client",
+                        "name", "in", ["Employee-Client",
 					"Work Order-Client",
-					"Delivery Note-Client",
 					"Service Request-Form"
                                        ]
                     ]
@@ -134,7 +134,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
             ]
 doctype_js = {
 	"Production Plan" : "proman/doctype/production_plan/production_plan.js",
-    "Project" : "proman/doctype/project/project.js"
+    "Project" : "proman/doctype/project/project.js",
+    "Delivery Note" : "proman/doctype/delivery_note/delivery_note.js",
+    "Quotation" : "proman/doctype/quotation/quotation.js"
 }
 
 override_doctype_dashboards = {
