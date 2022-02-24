@@ -95,7 +95,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Purchase Order-service_request",
                                        "Purchase Order-project",
                                        "Material Request-project",
-                                       "Project-gross_margin_amount"
+                                       "Project-gross_margin_amount",
+                                       "Timesheet Detail-total_billing_hours",
+                                       "Timesheet Detail-no_of_workers"
                                        ]
                     ]
                 ]},
@@ -136,7 +138,8 @@ doctype_js = {
 	"Production Plan" : "proman/doctype/production_plan/production_plan.js",
     "Project" : "proman/doctype/project/project.js",
     "Delivery Note" : "proman/doctype/delivery_note/delivery_note.js",
-    "Quotation" : "proman/doctype/quotation/quotation.js"
+    "Quotation" : "proman/doctype/quotation/quotation.js",
+    "Timesheet" : "proman/doctype/timesheet/timesheet.js"
 }
 
 override_doctype_dashboards = {
