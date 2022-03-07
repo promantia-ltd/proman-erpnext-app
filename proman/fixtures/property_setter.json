@@ -185,5 +185,39 @@
   "property_type": "Check",
   "row_name": null,
   "value": "1"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Timesheet Detail",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "hours",
+  "modified": "2022-03-03 23:47:37.188192",
+  "name": "Timesheet Detail-hours-label",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "label",
+  "property_type": "Data",
+  "row_name": null,
+  "value": "Total Billing Hours"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Timesheet Detail",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "hours",
+  "modified": "2022-03-03 23:58:28.940934",
+  "name": "Timesheet Detail-hours-columns",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "columns",
+  "property_type": "Int",
+  "row_name": null,
+  "value": "2"
  }
 ]
