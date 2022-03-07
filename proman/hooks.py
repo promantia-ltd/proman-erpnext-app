@@ -25,7 +25,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                     "Employee-naming_series-label",
                                     "Production Plan-project-mandatory_depends_on",
                                     "Project-gross_margin-hidden",
-                                    "Project-per_gross_margin-hidden"
+                                    "Project-per_gross_margin-hidden",
+                                    "Timesheet Detail-hours-label",
+                                    "Timesheet Detail-hours-columns"
                                     ]
                  ]
              ]},
@@ -96,7 +98,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Purchase Order-project",
                                        "Material Request-project",
                                        "Project-gross_margin_amount",
-                                       "Timesheet Detail-total_billing_hours",
+                                       "Timesheet Detail-individual_hours",
                                        "Timesheet Detail-no_of_workers"
                                        ]
                     ]
