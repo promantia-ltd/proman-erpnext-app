@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from . import __version__ as app_version
-
 app_name = "proman"
 app_title = "Proman"
 app_publisher = "proman_app"
@@ -10,7 +9,6 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "proman_app@gmail.com"
 app_license = "MIT"
-
 
 fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script",
             {"dt": "Property Setter",
@@ -99,7 +97,12 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Material Request-project",
                                        "Project-gross_margin_amount",
                                        "Timesheet Detail-individual_hours",
-                                       "Timesheet Detail-no_of_workers"
+                                       "Timesheet Detail-no_of_workers",
+                                       "Delivery Trip-delivery_stops_supplier",
+                                       "Delivery Trip-current_reading",
+                                       "Delivery Trip-previous_reading",
+                                       "Delivery Trip-unit_rate",
+                                       "Delivery Trip-distance"
                                        ]
                     ]
                 ]},
@@ -141,7 +144,8 @@ doctype_js = {
     "Project" : "proman/doctype/project/project.js",
     "Delivery Note" : "proman/doctype/delivery_note/delivery_note.js",
     "Quotation" : "proman/doctype/quotation/quotation.js",
-    "Timesheet" : "proman/doctype/timesheet/timesheet.js"
+    "Timesheet" : "proman/doctype/timesheet/timesheet.js",
+    "Delivery Trip" : "proman/doctype/delivery_trip/delivery_trip.js"
 }
 
 override_doctype_dashboards = {
