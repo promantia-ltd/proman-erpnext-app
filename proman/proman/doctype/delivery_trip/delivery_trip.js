@@ -22,6 +22,7 @@ frappe.ui.form.on('Delivery Trip', {
  			setters: {
  				company: frm.doc.company,
  			},
+			 
  			date_field: "posting_date",
  			get_query() {
  				return {
@@ -55,6 +56,9 @@ frappe.ui.form.on('Delivery Trip', {
 							child.supplier_address=p.address_display
 							suppliername=p.supplier
 							refresh_field("delivery_stops_supplier")
+							frm.set_value("type","Supplier")
+							refresh_field("type")
+
 							})
 						})
 					}
@@ -101,3 +105,5 @@ frappe.ui.form.on('Delivery Stops Supplier', {
 		frappe.model.set_value(cdt, cdn, "stock_entry", "");
 	}
 })
+
+
