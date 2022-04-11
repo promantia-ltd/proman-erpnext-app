@@ -25,8 +25,10 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                     "Project-gross_margin-hidden",
                                     "Project-per_gross_margin-hidden",
                                     "Timesheet Detail-hours-label",
-                                    "Timesheet Detail-hours-columns"
-                                    ]
+                                    "Timesheet Detail-hours-columns",
+				    "Delivery Trip-delivery_stops-mandatory_depends_on",
+				    "Delivery Trip-delivery_stops-reqd"
+			 ]
                  ]
              ]},
             {"dt": "Custom Field",
@@ -102,7 +104,8 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Delivery Trip-current_reading",
                                        "Delivery Trip-previous_reading",
                                        "Delivery Trip-unit_rate",
-                                       "Delivery Trip-distance"
+                                       "Delivery Trip-distance",
+				       "Delivery Trip-type",
                                        ]
                     ]
                 ]},

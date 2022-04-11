@@ -16,12 +16,15 @@ frappe.ui.form.on('Delivery Trip', {
 		if (frm.doc.docstatus === 0) {
 		frm.add_custom_button(__('Stock Entry'), function(){
 			var select={}
+			frm.set_value("type","Supplier")
+			refresh_field("type")
 			let dialogObj= new frappe.ui.form.MultiSelectDialog({
  			doctype: "Stock Entry",
  			target: frm,
  			setters: {
  				company: frm.doc.company,
  			},
+			 
  			date_field: "posting_date",
  			get_query() {
  				return {
@@ -55,11 +58,10 @@ frappe.ui.form.on('Delivery Trip', {
 							child.supplier_address=p.address_display
 							suppliername=p.supplier
 							refresh_field("delivery_stops_supplier")
-							})
 						})
-					}
-
-				})
+					})
+				}
+			})
 				dialogObj.dialog.hide()
 			}
 			})
@@ -101,3 +103,5 @@ frappe.ui.form.on('Delivery Stops Supplier', {
 		frappe.model.set_value(cdt, cdn, "stock_entry", "");
 	}
 })
+
+
