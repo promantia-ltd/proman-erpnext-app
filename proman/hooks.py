@@ -105,7 +105,7 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                        "Delivery Trip-previous_reading",
                                        "Delivery Trip-unit_rate",
                                        "Delivery Trip-distance",
-				       "Delivery Trip-type",
+				       "Delivery Trip-delivery_trip_type",
                                        ]
                     ]
                 ]},
