@@ -11,8 +11,9 @@ frappe.ui.form.on('Delivery Trip', {
 					}
 				};
 			}
+			
 		})
-
+		
 		if (frm.doc.docstatus === 0) {
 		frm.add_custom_button(__('Stock Entry'), function(){
 			var select={}
@@ -101,7 +102,17 @@ frappe.ui.form.on('Delivery Stops Supplier', {
 		frappe.model.set_value(cdt, cdn, "address", "");
 		frappe.model.set_value(cdt, cdn, "supplier_address", "");
 		frappe.model.set_value(cdt, cdn, "stock_entry", "");
-	}
+	},
+	departure_time:function(frm, cdt, cdn){
+		type_delivery_note(frm,cdt,cdn);
+ 	}
 })
-
-
+function type_delivery_note(frm,cdt,cdn){
+	var d = locals[cdt][cdn];
+	frm.doc.delivery_stops.forEach(function(d) {
+		if(d.delivery_note != undefined){
+			frm.set_value("type","Customer")	
+			refresh_field("type")
+		}
+	})
+}
