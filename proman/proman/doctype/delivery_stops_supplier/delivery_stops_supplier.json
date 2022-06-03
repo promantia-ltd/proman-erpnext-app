@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "creation": "2022-03-24 18:30:08.511901",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "supplier",
+  "address",
+  "type",
+  "supplier_address",
+  "stock_entry"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Address Name",
+   "options": "Address",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "supplier_address",
+   "fieldtype": "Small Text",
+   "label": "Supplier Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock Entry",
+   "no_copy": 1,
+   "options": "Stock Entry",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "\nSupply\nReceive\nNot Received"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-04-28 15:48:00.319339",
+ "modified_by": "Administrator",
+ "module": "Proman",
+ "name": "Delivery Stops Supplier",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
