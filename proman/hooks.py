@@ -14,20 +14,21 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
             {"dt": "Property Setter",
              "filters": [
                  [
-                     "name", "in", ["Lead-contact_by-reqd",
-                                    "Lead-contact_date-reqd",
-                                    "Lead-ends_on-reqd",
-                                    "Lead-notes-reqd", "Lead-phone-reqd",
-                                    "Lead-mobile_no-reqd",
-                                    "Lead-fax-reqd",
-                                    "Employee-naming_series-label",
-                                    "Production Plan-project-mandatory_depends_on",
-                                    "Project-gross_margin-hidden",
-                                    "Project-per_gross_margin-hidden",
-                                    "Timesheet Detail-hours-label",
-                                    "Timesheet Detail-hours-columns",
-				    "Delivery Trip-delivery_stops-mandatory_depends_on",
-				    "Delivery Trip-delivery_stops-reqd"
+                    "name", "in", ["Lead-contact_by-reqd",
+                                "Lead-contact_date-reqd",
+                                "Lead-ends_on-reqd",
+                                "Lead-notes-reqd", "Lead-phone-reqd",
+                                "Lead-mobile_no-reqd",
+                                "Lead-fax-reqd",
+                                "Employee-naming_series-label",
+                                "Production Plan-project-mandatory_depends_on",
+                                "Project-gross_margin-hidden",
+                                "Project-per_gross_margin-hidden",
+                                "Timesheet Detail-hours-label",
+                                "Timesheet Detail-hours-columns",
+                                "Delivery Trip-delivery_stops-mandatory_depends_on",
+                                "Delivery Trip-delivery_stops-reqd",
+                                "Quotation Item-actual_qty-columns"
 			 ]
                  ]
              ]},
