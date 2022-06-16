@@ -253,5 +253,22 @@
   "property_type": "Data",
   "row_name": null,
   "value": "eval: doc.delivery_trip_type==\"Customer\""
+ },
+ {
+  "default_value": null,
+  "doc_type": "Quotation Item",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "actual_qty",
+  "modified": "2022-06-15 10:35:53.660018",
+  "name": "Quotation Item-actual_qty-columns",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "columns",
+  "property_type": "Int",
+  "row_name": null,
+  "value": "2"
  }
 ]
