@@ -28,7 +28,9 @@ fixtures = ["Workflow","Workflow State","Workflow Action Master", "Server Script
                                 "Timesheet Detail-hours-columns",
                                 "Delivery Trip-delivery_stops-mandatory_depends_on",
                                 "Delivery Trip-delivery_stops-reqd",
-                                "Quotation Item-actual_qty-columns"
+                                "Quotation Item-actual_qty-columns",
+                                "Quotation Item-actual_qty-in_list_view",
+                                "Quotation Item-item_code-columns"
 			 ]
                  ]
              ]},
