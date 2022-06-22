@@ -20,7 +20,7 @@ def execute(filters=None):
 
 	group_wise_columns = frappe._dict({
 		"invoice": ["invoice_or_item", "customer", "customer_group", "posting_date","item_code", "item_name","item_group", "brand", "description",
-			"warehouse", "qty", "base_rate", "buying_rate", "base_amount",
+			"warehouse", "qty", "base_rate", "buying_rate", "incoming_rate","base_amount",
 			"buying_amount", "gross_profit", "gross_profit_percent", "project"],
 		"item_code": ["item_code", "item_name", "brand", "description", "qty", "base_rate",
 			"buying_rate", "base_amount", "buying_amount", "gross_profit", "gross_profit_percent"],
@@ -97,6 +97,7 @@ def get_columns(group_wise_columns, filters):
 		"qty": _("Qty") + ":Float:80",
 		"base_rate": _("Avg. Selling Rate") + ":Currency/currency:100",
 		"buying_rate": _("Valuation Rate") + ":Currency/currency:100",
+		"incoming_rate":_("Incoming Rate") + ":Currency/currency:100",
 		"base_amount": _("Selling Amount") + ":Currency/currency:100",
 		"buying_amount": _("Buying Amount") + ":Currency/currency:100",
 		"gross_profit": _("Gross Profit") + ":Currency/currency:100",
@@ -137,6 +138,7 @@ def get_column_names():
 		'qty': 'qty',
 		'base_rate': 'avg._selling_rate',
 		'buying_rate': 'valuation_rate',
+		'incoming_rate':'incoming_rate',
 		'base_amount': 'selling_amount',
 		'buying_amount': 'buying_amount',
 		'gross_profit': 'gross_profit',
@@ -205,9 +207,18 @@ class GrossProfitGenerator(object):
 			if flt(row.qty):
 				row.buying_rate = flt(row.buying_amount / flt(row.qty), self.float_precision)
 				row.base_rate = flt(row.base_amount / flt(row.qty), self.float_precision)
+				args = row
+				args.update({
+					'voucher_type': row.parenttype,
+					'voucher_no': row.parent,
+					'allow_zero_valuation': True,
+					'company': self.filters.company
+				})
+
+				row.incoming_rate= flt(get_incoming_rate(args))
 			else:
 				if self.is_not_invoice_row(row):
-					row.buying_rate, row.base_rate = 0.0, 0.0
+					row.buying_rate, row.base_rate,row.incoming_rate = 0.0, 0.0,0.0
 
 			# calculate gross profit
 			row.gross_profit = flt(row.base_amount - row.buying_amount, self.currency_precision)
@@ -543,7 +554,7 @@ class GrossProfitGenerator(object):
 
 	def load_stock_ledger_entries(self):
 		res = frappe.db.sql("""select item_code, voucher_type, voucher_no,
-				voucher_detail_no, stock_value,valuation_rate, warehouse, actual_qty as qty
+				voucher_detail_no, stock_value,valuation_rate,incoming_rate,warehouse, actual_qty as qty
 			from `tabStock Ledger Entry`
 			where company=%(company)s and is_cancelled = 0
 			order by
